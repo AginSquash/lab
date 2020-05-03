@@ -6,56 +6,49 @@ using namespace std;
 
 #define SIZE 10
 
-stack::stack(int size) {
-    arr = new DateTime[size];
-    top = -1;
-    capacity = size;
-}
+#import "stack.h"
 
-
-void stack::push(DateTime dt)
+stack::stack()
 {
-    if (top + 1 == capacity)
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    arr[++top] = dt;
-}
-
-DateTime stack::pop()
-{
-    if (isEmpty())
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    return arr[top--];
-}
-
-DateTime stack::peek(int i) const
-{
-    if (isEmpty())
-    {
-        exit(EXIT_FAILURE);
-    }
-
-    return arr[top-i];
-}
-
-bool stack::isEmpty() const
-{
-    return top == -1;
-}
-
-int stack::size() const
-{
-    return top + 1;
+    peak = NULL;
 }
 
 stack::~stack()
 {
-    while (!isEmpty()) {
+    while(!is_empty())
         pop();
-    }
+}
+
+bool stack::is_empty() const
+{
+    return peak == NULL;
+}
+
+stack::Node::Node(const DateTime& dt, Node* c) : next(c)
+{
+    contain = dt;
+}
+
+void stack::push(const DateTime& dt)
+{
+    peak = new Node(dt, peak);
+    size++;
+}
+
+DateTime stack::pop()
+{
+    Node c(*peak);
+    size--;
+    peak = c.next;
+    return c.contain;
+}
+
+void stack::pop(DateTime& dt)
+{
+   // assert(peak != NULL);
+    dt = peak->contain;
+    Node* c = peak;
+    peak = peak->next;
+    size--;
+    delete c;
 }

@@ -12,23 +12,33 @@
 
 #define SIZE 10
 
-class stack
-{
-private:
-    DateTime *arr;
-    int top;
+#import "OOP/DT.h"
 
+class stack {
 public:
+    stack();
 
-    stack(int size = SIZE);
-    int capacity;
-
-    void push(DateTime);
-    DateTime pop();
-    int size() const;
-    bool isEmpty() const;
-    DateTime peek(int i) const;
     ~stack();
+
+    void push(const DateTime &dt);
+
+    void pop(DateTime &out);
+
+    DateTime pop();
+
+    bool is_empty() const;
+
+    int size = 0;
+
+private:
+    class Node {
+    public:
+        Node(const DateTime &dt, Node *c);
+        DateTime contain;
+        Node *next;
+    };
+
+    Node *peak;
 };
 
 #endif //LABA8_STACK_H

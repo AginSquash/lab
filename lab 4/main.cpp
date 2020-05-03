@@ -10,18 +10,6 @@ void output(string name, stack dt);
 #define ArraySIZE 9
 
 
-stack getSorted(stack newStack, DATE_WeekDay weekDay) {
-    stack stackToReturn;
-    for (int i = 0; i < newStack.size(); i++) {
-        DateTime newDT = newStack.pop();
-        if (newDT.getWeekDay() == weekDay) {
-            stackToReturn.push(newDT);
-        }
-    }
-
-    return stackToReturn;
-}
-
 int main() {
     DateTime dt (2020, 03, 20, 0, 0, 0);
     DateTime dt1(2020, 03, 21, 0, 0, 0);
@@ -35,7 +23,7 @@ int main() {
 
     DateTime dtArray[ArraySIZE] = { dt, dt1, dt2, dt3, dt4, dt5, dt6, dt7, dt8 };
 
-    stack dtStack(ArraySIZE);
+    stack dtStack;
     for (int i = 0; i < ArraySIZE; i++ ) {
         dtStack.push(dtArray[i]);
     }
@@ -91,5 +79,5 @@ int main() {
 }
 
 void output(string name, stack dt) {
-    cout << name << " stack size: " << dt.size() << endl;
+    cout << name << " stack size: " << dt.size << endl;
 }
