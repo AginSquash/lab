@@ -4,10 +4,6 @@
 #include "stack.h"
 using namespace std;
 
-#define SIZE 10
-
-#import "stack.h"
-
 stack::stack()
 {
     peak = NULL;
@@ -45,7 +41,6 @@ DateTime stack::pop()
 
 void stack::pop(DateTime& dt)
 {
-   // assert(peak != NULL);
     dt = peak->contain;
     Node* c = peak;
     peak = peak->next;
