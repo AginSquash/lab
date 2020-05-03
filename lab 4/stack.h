@@ -16,18 +16,19 @@ class stack
 {
 private:
     DateTime *arr;
-    int capacity;
     int top;
 
 public:
+
     stack(int size = SIZE);
+    stack(const stack &st);
+    int capacity;
 
     void push(DateTime);
     DateTime pop();
-
     int size();
-    bool isEmpty();
-
+    bool isEmpty() const;
+    DateTime peek(int i) const;
     ~stack();
 };
 

@@ -7,6 +7,21 @@ using namespace std;
 
 void output(string name, stack dt);
 
+#define ArraySIZE 9
+
+
+stack getSorted(stack newStack, DATE_WeekDay weekDay) {
+    stack stackToReturn;
+    for (int i = 0; i < newStack.size(); i++) {
+        DateTime newDT = newStack.pop();
+        if (newDT.getWeekDay() == weekDay) {
+            stackToReturn.push(newDT);
+        }
+    }
+
+    return stackToReturn;
+}
+
 int main() {
     DateTime dt (2020, 03, 20, 0, 0, 0);
     DateTime dt1(2020, 03, 21, 0, 0, 0);
@@ -18,8 +33,6 @@ int main() {
     DateTime dt7(2020, 03, 27, 0, 0, 0);
     DateTime dt8(2020, 03, 28, 0, 0, 0);
 
-#define ArraySIZE 9
-
     DateTime dtArray[ArraySIZE] = { dt, dt1, dt2, dt3, dt4, dt5, dt6, dt7, dt8 };
 
     stack dtStack(ArraySIZE);
@@ -27,13 +40,15 @@ int main() {
         dtStack.push(dtArray[i]);
     }
 
+
     stack SundayStack;
     stack MondayStack;
-    stack TuesdayStack(10);
-    stack WednesdayStack(10);
-    stack ThursdayStack(10);
-    stack FridayStack(10);
-    stack SaturdayStack(10);
+    stack TuesdayStack;
+    stack WednesdayStack;
+    stack ThursdayStack;
+    stack FridayStack;
+    stack SaturdayStack;
+
 
     for (int i = 0; i < ArraySIZE; i++) {
         DateTime newDT = dtStack.pop();
@@ -61,6 +76,8 @@ int main() {
                 break;
         }
     }
+
+
 
     output("Sunday", SundayStack);
     output("Monday", MondayStack);
