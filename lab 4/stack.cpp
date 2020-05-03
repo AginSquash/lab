@@ -48,7 +48,7 @@ bool stack::isEmpty() const
     return top == -1;
 }
 
-int stack::size()
+int stack::size() const
 {
     return top + 1;
 }

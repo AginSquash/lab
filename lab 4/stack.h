@@ -25,7 +25,7 @@ public:
 
     void push(DateTime);
     DateTime pop();
-    int size();
+    int size() const;
     bool isEmpty() const;
     DateTime peek(int i) const;
     ~stack();
