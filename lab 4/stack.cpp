@@ -12,17 +12,7 @@ stack::stack(int size) {
     capacity = size;
 }
 
-/*
-stack::stack(const stack &st) {
-    capacity = st.capacity;
-    top = -1;
-    arr = new DateTime[capacity];
 
-    for(int i = 0; i < capacity; i++) {
-        arr[i] = st.peek(capacity - i);
-    }
-}
-*/
 void stack::push(DateTime dt)
 {
     if (top + 1 == capacity)

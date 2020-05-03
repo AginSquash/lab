@@ -21,7 +21,6 @@ private:
 public:
 
     stack(int size = SIZE);
-    stack(const stack &st);
     int capacity;
 
     void push(DateTime);
