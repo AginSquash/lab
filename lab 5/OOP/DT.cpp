@@ -290,13 +290,13 @@ std::string DateTime::toLower(std::string f) {
 };
 
 DT_timeType DateTime::getType(std::string f){
-    if (f == "dd") {
+    if (f == "dd" || f == "day" ) {
         return AT_DAY;
     }
-    if (f == "mm") {
+    if (f == "mm" || f == "month") {
         return AT_MON;
     }
-    if (f == "yy") {
+    if (f == "yy" || f == "year") {
         return AT_YEAR;
     }
 }
@@ -306,20 +306,18 @@ std::string DateTime::toString(std::string format) {
     string f1 = "";
     if ( index != string::npos ) {
         f1 = format.substr(0, index);
-    } else { return "Error"; }
-    int index2 = format.find(".");
+        format = format.substr(index+1);
+    } else { return "Error 1"; }
 
+    index = format.find(".");
     string f2 = "";
-    if ( index2 != string::npos ) {
-        f2 = format.substr(index+1, index2);
-
-    } else { return "Error"; }
+    if ( index != string::npos ) {
+        f2 = format.substr(0, index);
+        format = format.substr(index+1);
+    } else { return "Error 2"; }
 
     string f3 = "";
-    index = format.find_last_of(".");
-    if ( index != string::npos ) {
-        f3 = format.substr(index+1);
-    } else { return "Error"; }
+    f3 = format.substr(0);
 
     f1 = toLower(f1); f2 = toLower(f2); f3 = toLower(f3);
     DT_timeType type[3] = { getType(f1), getType(f2), getType(f3)};
