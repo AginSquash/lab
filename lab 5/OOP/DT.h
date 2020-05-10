@@ -81,6 +81,7 @@ private:
     std::string toLower(std::string f);
     DT_timeType getType(std::string f);
     std::string monthToString(int month, std::string monthLang);
+    std::string split(std::string &f);
     bool isRange = false;
 
 public:
@@ -106,7 +107,7 @@ public:
     DateTime subtractDaysSeconds(long long days, int seconds);
 
     std::string toString(std::string format, std::string lang);
-
+    DateTime parse(std::string exp);
     // override-func
     friend std::ostream& operator<<(std::ostream &out, DateTime &dt);
     DateTime& operator= (const DateTime &dt);

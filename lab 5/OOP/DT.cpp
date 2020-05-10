@@ -365,20 +365,10 @@ DT_timeType DateTime::getType(std::string f){
 
 
 std::string DateTime::toString(std::string format, std::string lang) {
-    int index = format.find(".");
     string f1 = "";
-    if ( index != string::npos ) {
-        f1 = format.substr(0, index);
-        format = format.substr(index+1);
-    } else { return "Error 1"; }
-
-    index = format.find(".");
+    f1 = split(format);
     string f2 = "";
-    if ( index != string::npos ) {
-        f2 = format.substr(0, index);
-        format = format.substr(index+1);
-    } else { return "Error 2"; }
-
+    f2 = split(format);
     string f3 = "";
     f3 = format.substr(0);
 
@@ -406,6 +396,19 @@ std::string DateTime::toString(std::string format, std::string lang) {
     return returnString;
 }
 
+std::string DateTime::split(std::string &f) {
+    int index = f.find(".");
+    string f1 = "";
+    if ( index != string::npos ) {
+        f1 = f.substr(0, index);
+        f = f.substr(index+1);
+        return f1;
+    } else { return "Error"; }
+}
+
+DateTime DateTime::parse(std::string exp) {
+
+}
 
 DateTime& DateTime::operator=(const DateTime &dt) {
         dt_days = dt.dt_days;
