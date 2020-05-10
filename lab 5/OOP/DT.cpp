@@ -282,6 +282,70 @@ DT_HourMinSec DateTime::ord2hms(int n) {
     return DT_HourMinSec(hours, min, sec);
 }
 
+std::string DateTime::toLower(std::string f) {
+    for (int i = 0; i < f.length(); ++i) {
+        f[i] = std::tolower(f[i]);
+    }
+    return f;
+};
+
+DT_timeType DateTime::getType(std::string f){
+    if (f == "dd") {
+        return AT_DAY;
+    }
+    if (f == "mm") {
+        return AT_MON;
+    }
+    if (f == "yy") {
+        return AT_YEAR;
+    }
+}
+
+std::string DateTime::toString(std::string format) {
+    int index = format.find(".");
+    string f1 = "";
+    if ( index != string::npos ) {
+        f1 = format.substr(0, index);
+    } else { return "Error"; }
+    int index2 = format.find(".");
+
+    string f2 = "";
+    if ( index2 != string::npos ) {
+        f2 = format.substr(index+1, index2);
+
+    } else { return "Error"; }
+
+    string f3 = "";
+    index = format.find_last_of(".");
+    if ( index != string::npos ) {
+        f3 = format.substr(index+1);
+    } else { return "Error"; }
+
+    f1 = toLower(f1); f2 = toLower(f2); f3 = toLower(f3);
+    DT_timeType type[3] = { getType(f1), getType(f2), getType(f3)};
+
+    DT_YearMonthDay ymd = ord2ymd(dt_days);
+
+    string returnString = "";
+    for (int i = 0; i < 3; ++i) {
+        if (type[i] == AT_DAY) {
+            returnString += std::to_string(ymd.day);
+        }
+        if (type[i] == AT_MON) {
+            returnString += std::to_string(ymd.month);
+        }
+        if (type[i] == AT_YEAR) {
+            returnString += std::to_string(ymd.year);
+        }
+        if (i != 2) {
+            returnString += ".";
+        }
+    }
+
+    return returnString;
+}
+
+
 DateTime& DateTime::operator=(const DateTime &dt) {
         dt_days = dt.dt_days;
         dt_seconds = dt.dt_seconds;

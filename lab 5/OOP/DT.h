@@ -9,6 +9,7 @@
 #include <string> //fix for windows
 #include "../collab/Date.h"
 
+
 enum DT_timeType
 {
     AT_YEAR = 1,
@@ -77,8 +78,8 @@ private:
     int days_in_month(int year, int month);
     int days_before_month(int year, int month);
     static std::string parseDT(int value, int length = 2);
-
-
+    std::string toLower(std::string f);
+    DT_timeType getType(std::string f);
     bool isRange = false;
 
 public:
@@ -102,6 +103,8 @@ public:
 
     DateTime addDaysSeconds(long long days, int seconds);
     DateTime subtractDaysSeconds(long long days, int seconds);
+
+    std::string toString(std::string format);
 
     // override-func
     friend std::ostream& operator<<(std::ostream &out, DateTime &dt);

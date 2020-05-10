@@ -71,23 +71,8 @@ int main() {
 
 #ifdef DEBUG
     DateTime dt(2020, 03, 24, 0, 0, 0);
-    DateTime dt1(  10, 04, 5, 5, 1, 0);
-    DateTime dt2(2020, 03, 24, 0, 0, 0);
 
-    DateTime dt3 = dt - dt1;
-    dt3 -= dt1;
-   // DateTime dt3 = dt + dt1;
-    //cout << int(dt3) << endl;
-
-    //dt += dt1;
-    cout << dt3 << endl;
-
-    if (dt >= dt2)
-    {
-        cout << "dt >= dt2 - true" << endl;
-    }
-
-    cout << dt1[AT_DAY] << endl;
+    cout << dt.toString("mm.dd.yy");
 #endif
 #ifndef DEBUG
     OOP();
