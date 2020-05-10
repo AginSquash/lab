@@ -20,7 +20,7 @@ bool stack::is_empty() const
     return peak == NULL;
 }
 
-stack::Node::Node(const DateTime& dt, Node* c) : next(c)
+stack::Node::Node(const DateTime& dt, Node* node) : next(node)
 {
     contain = dt;
 }
@@ -33,17 +33,16 @@ void stack::push(const DateTime& dt)
 
 DateTime stack::pop()
 {
-    Node c(*peak);
     size--;
-    peak = c.next;
-    return c.contain;
+    peak = node.next;
+    return node.contain;
 }
 
 void stack::pop(DateTime& dt)
 {
     dt = peak->contain;
-    Node* c = peak;
+    Node* node = peak;
     peak = peak->next;
     size--;
-    delete c;
+    delete node;
 }

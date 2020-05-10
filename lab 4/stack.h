@@ -33,7 +33,7 @@ public:
 private:
     class Node {
     public:
-        Node(const DateTime &dt, Node *c);
+        Node(const DateTime &dt, Node *node);
         DateTime contain;
         Node *next;
     };
