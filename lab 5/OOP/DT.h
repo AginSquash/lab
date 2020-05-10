@@ -80,6 +80,7 @@ private:
     static std::string parseDT(int value, int length = 2);
     std::string toLower(std::string f);
     DT_timeType getType(std::string f);
+    std::string monthToString(int month, std::string monthLang);
     bool isRange = false;
 
 public:
@@ -104,7 +105,7 @@ public:
     DateTime addDaysSeconds(long long days, int seconds);
     DateTime subtractDaysSeconds(long long days, int seconds);
 
-    std::string toString(std::string format);
+    std::string toString(std::string format, std::string lang);
 
     // override-func
     friend std::ostream& operator<<(std::ostream &out, DateTime &dt);

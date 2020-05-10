@@ -72,7 +72,7 @@ int main() {
 #ifdef DEBUG
     DateTime dt(2020, 03, 24, 0, 0, 0);
 
-    cout << dt.toString("month.dAY.Year");
+    cout << dt.toString("month.dAY.Year", "GB-gb");
 #endif
 #ifndef DEBUG
     OOP();

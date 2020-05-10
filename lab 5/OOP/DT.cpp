@@ -145,6 +145,68 @@ int DateTime::abs(int value){
     return value;
 }
 
+std::string DateTime::monthToString(int month, std::string monthLang) {
+    if (monthLang == "GB-gb") {
+        switch (month) {
+            case 1:
+                return "January";
+            case 2:
+                return "February";
+            case 3:
+                return "March";
+            case 4:
+                return "April";
+            case 5:
+                return "May";
+            case 6:
+                return "June";
+            case 7:
+                return "July";
+            case 8:
+                return "August";
+            case 9:
+                return "September";
+            case 10:
+                return "October";
+            case 11:
+                return "November";
+            case 12:
+                return "December";
+        }
+    }
+
+    if (monthLang == "RU-ru") {
+        switch (month) {
+            case 1:
+                return "январь";
+            case 2:
+                return "февраль";
+            case 3:
+                return "март";
+            case 4:
+                return "апрель";
+            case 5:
+                return "май";
+            case 6:
+                return "июнь";
+            case 7:
+                return "июль";
+            case 8:
+                return "август";
+            case 9:
+                return "сентябрь";
+            case 10:
+                return "октябрь";
+            case 11:
+                return "ноябрь";
+            case 12:
+                return "декабрь";
+        }
+    }
+
+    return std::to_string(month);
+}
+
 DateTime DateTime::subtractDateTime(int year, int mon, int day, int hour, int min, int sec)
 {
     if (checkDate(year, mon, day, true)) {
@@ -301,7 +363,8 @@ DT_timeType DateTime::getType(std::string f){
     }
 }
 
-std::string DateTime::toString(std::string format) {
+
+std::string DateTime::toString(std::string format, std::string lang) {
     int index = format.find(".");
     string f1 = "";
     if ( index != string::npos ) {
@@ -330,7 +393,7 @@ std::string DateTime::toString(std::string format) {
             returnString += std::to_string(ymd.day);
         }
         if (type[i] == AT_MON) {
-            returnString += std::to_string(ymd.month);
+            returnString += monthToString(ymd.month, lang);
         }
         if (type[i] == AT_YEAR) {
             returnString += std::to_string(ymd.year);
