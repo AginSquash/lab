@@ -72,7 +72,9 @@ int main() {
 #ifdef DEBUG
     DateTime dt(2020, 03, 24, 0, 0, 0);
 
-    cout << dt.toString("month.dAY.Year", "GB-gb");
+    cout << dt.toString("month.dAY.Year", "GB-gb") << endl;
+
+    cout << DateTime().parse("12.03.2020 14:03:33").getDateTime();
 #endif
 #ifndef DEBUG
     OOP();

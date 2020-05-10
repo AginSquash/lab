@@ -396,8 +396,8 @@ std::string DateTime::toString(std::string format, std::string lang) {
     return returnString;
 }
 
-std::string DateTime::split(std::string &f) {
-    int index = f.find(".");
+std::string DateTime::split(std::string &f, char symb) {
+    int index = f.find(symb);
     string f1 = "";
     if ( index != string::npos ) {
         f1 = f.substr(0, index);
@@ -407,7 +407,28 @@ std::string DateTime::split(std::string &f) {
 }
 
 DateTime DateTime::parse(std::string exp) {
+    std::string day = "";  std::string mon = ""; std::string year = "";
+    std::string hour = ""; std::string min = ""; std::string sec = "";
 
+    int index = exp.find(" ");
+    if (index == string::npos) {
+        exit(123);
+    }
+
+    std::string f = "";
+    f = exp.substr(0, index);
+    exp = exp.substr(index + 1);
+    day = split(f);
+    mon = split(f);
+    year = f.substr(0);
+
+
+    hour = split(exp, ':');
+    min = split(exp, ':');
+    sec = exp.substr(0);
+
+    DateTime dt(std::stoi(year), std::stoi(mon), std::stoi(day),std::stoi(hour), std::stoi(min), std::stoi(sec));
+    return dt;
 }
 
 DateTime& DateTime::operator=(const DateTime &dt) {
