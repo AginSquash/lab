@@ -33,6 +33,7 @@ void stack::push(const DateTime& dt)
 
 DateTime stack::pop()
 {
+    Node node(*peak);
     size--;
     peak = node.next;
     return node.contain;
