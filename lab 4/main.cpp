@@ -5,10 +5,11 @@ using namespace std;
 #include "OOP/DT.h"
 #include "stack.h"
 
-void output(string name, stack dt);
-
 #define ArraySIZE 9
 
+void output(string name, stack dt) {
+    cout << name << " stack size: " << dt.size() << endl;
+}
 
 int main() {
     DateTime dt (2020, 03, 20, 0, 0, 0);
@@ -76,8 +77,4 @@ int main() {
     output("Saturday", SaturdayStack);
 
     return 0;
-}
-
-void output(string name, stack dt) {
-    cout << name << " stack size: " << dt.size() << endl;
 }

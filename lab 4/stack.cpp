@@ -12,7 +12,6 @@ stack::stack(int size) {
     capacity = size;
 }
 
-
 void stack::push(DateTime dt)
 {
     if (top + 1 == capacity)
