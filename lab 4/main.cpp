@@ -9,6 +9,19 @@ void output(string name, stack dt);
 
 #define ArraySIZE 9
 
+/*
+stack getSorted(stack newStack, DATE_WeekDay weekDay) {
+    stack stackToReturn;
+    for (int i = 0; i < newStack.size; i++) {
+        DateTime newDT = newStack.pop();
+        if (newDT.getWeekDay() == weekDay) {
+            stackToReturn.push(newDT);
+        }
+    }
+
+    return stackToReturn;
+}
+*/
 
 int main() {
     DateTime dt (2020, 03, 20, 0, 0, 0);
